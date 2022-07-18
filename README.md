@@ -4,10 +4,12 @@ Waits patiently for a spinner to disappear from the UI.
 
 It has these defaults:
 
-- xpath of element to find: `.spinner`
+- xpath of element to find: `//div[contains(@class,"spinner")]`
 - time between each check: `1 second`
 - maximum number of checks: `120`
 - number of sequential checks to make to declare the spinner gone: `2`
+
+This means it looks for a `<div class="spinner ...">` in the DOM.
 
 In theory, it should have configurable settings within TestProject, but they're not 
 currently exposed because we used a deprecated annotation and the docs aren't clear 
@@ -22,15 +24,16 @@ unclear, so it's not part of this code. I don't think it's needed.
 
 You need to first download the TestProject SDK, which is available from their website.
 
-Download it and place it into: `/sdk/io.testproject.sdk.java.jar`.
+Download it and place it into: `/sdk/io.testproject.sdk.java.jar`.  I haven't included it here as it's not mine to license.
 
-I haven't included it here as it's not mine to license.
+When building, you need to manually do these things:
+
+1. Update the version in `manifest.json`.
+2. Run the gradle build process (I use IntelliJ IDEA)
+3. Upload `build/lib/WaitForSpinner.jar` into TestProject's addon's section 
 
 This has been built against version 0.65.0 of the TestProject SDK using Gradle 7 from within IntelliJ IDEA.
 If you update the SDK, you must manually update `src/main/testproject-sdk.properties`
-
-The `build.gradle` file tells Gradle how to build the plugin. You'll find the `.jar` file in 
-`build/libs/WaitForSpinner.jar` once it's built.
 
 ## Developing
 
