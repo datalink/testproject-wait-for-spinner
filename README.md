@@ -4,12 +4,12 @@ Waits patiently for a spinner to disappear from the UI.
 
 It has these defaults:
 
-- xpath of element to find: `//div[contains(@class,"spinner")]`
+- xpath of element to find: `//div[contains(@class,"spinner") and not(contains(@style,"none"))]`
 - time between each check: `1 second`
 - maximum number of checks: `120`
 - number of sequential checks to make to declare the spinner gone: `2`
 
-This means it looks for a `<div class="spinner ...">` in the DOM.
+This means it looks for a `<div class="spinner ...">` in the DOM that doesn't have a style="display:none" in it.
 
 In theory, it should have configurable settings within TestProject, but they're not 
 currently exposed because we used a deprecated annotation and the docs aren't clear 

@@ -17,7 +17,7 @@ import org.openqa.selenium.NoSuchElementException;
 public class WaitForSpinnerAction implements WebAction {
 
     @ActionParameter
-    public String xpath = "//div[contains(@class,\"spinner\")]";
+    public String xpath = "//div[contains(@class,\"spinner\") and not(contains(@style,\"none\"))]";
 
     @ActionParameter
     public int sleep = 1000; // ms
