@@ -9,16 +9,9 @@ It has these defaults:
 - maximum number of checks: `120`
 - number of sequential checks to make to declare the spinner gone: `2`
 
-This means it looks for a `<div class="spinner ...">` in the DOM that doesn't have a style="display:none" in it.
+This means it looks for a `<div class="spinner ...">` in the DOM that doesn't have a style="display: none" in it.
 
-In theory, it should have configurable settings within TestProject, but they're not 
-currently exposed because we used a deprecated annotation and the docs aren't clear 
-on how the new way works. So if you need to change these then you need to edit the code.
-
-## Developer token
-
-I downloaded a developer token as instructed, but instructions beyond that point were
-unclear, so it's not part of this code. I don't think it's needed.
+![Screenshot of the plugin](docs/screenshot.png)
 
 ## Build
 
@@ -51,7 +44,7 @@ It's pretty self-explanatory — here's some pseudocode.
 do {
    check for spinner
    wait
-} while (spinning && not timed out)
+} while (spinner is in the DOM && not timed out)
 ```
 
 ## Tests

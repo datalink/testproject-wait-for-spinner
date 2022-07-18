@@ -1,7 +1,7 @@
 package au.com.datalink.testproject;
 
 import io.testproject.java.annotations.v2.Action;
-import io.testproject.java.annotations.v2.ActionParameter;
+import io.testproject.java.annotations.v2.Parameter;
 import io.testproject.java.sdk.v2.addons.WebAction;
 import io.testproject.java.sdk.v2.addons.helpers.WebAddonHelper;
 import io.testproject.java.sdk.v2.drivers.WebDriver;
@@ -16,16 +16,16 @@ import org.openqa.selenium.NoSuchElementException;
 @Action(name = "Wait for Spinner")
 public class WaitForSpinnerAction implements WebAction {
 
-    @ActionParameter
+    @Parameter
     public String xpath = "//div[contains(@class,\"spinner\") and not(contains(@style,\"none\"))]";
 
-    @ActionParameter
+    @Parameter
     public int sleep = 1000; // ms
 
-    @ActionParameter
+    @Parameter
     public int maxTries = 120; // 120 x 1 second tries by default
 
-    @ActionParameter
+    @Parameter
     public int triesNeededToPass = 2;
 
     public ExecutionResult execute(WebAddonHelper helper) throws FailureException {
