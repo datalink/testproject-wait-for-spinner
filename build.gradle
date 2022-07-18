@@ -1,0 +1,32 @@
+group 'au.com.datalink.testproject'
+version '1.0'
+
+apply plugin: 'java'
+
+// If necessary, update the location of TestProject SDK JAR file
+def TP_SDK = './sdk/io.testproject.sdk.java.jar'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+// JAR Task
+jar {
+
+    assert file("${TP_SDK}").exists(): "TestProject SDK JAR file was not found, please update the TP_SDK variable"
+    archiveName "${rootProject.name}.jar"
+    dependsOn configurations.runtimeClasspath
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+}
+
+dependencies {
+    implementation files("${TP_SDK}")
+}
